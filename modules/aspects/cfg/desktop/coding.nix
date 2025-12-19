@@ -5,6 +5,7 @@
       (<den/unfree_agg> [
         "vscode"
         "vscode-extension-mhutchie-git-graph"
+        "vscode-extension-MS-python-vscode-pylance"
       ])
     ];
 

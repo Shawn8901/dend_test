@@ -6,6 +6,17 @@ let
       default = [ ];
     };
   };
+
+  moduleImports = [
+    unfreeComposableModule
+    (
+      { config, ... }:
+      {
+        nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) config.unfree.packages;
+      }
+    )
+  ];
+
 in
 {
   den.provides.unfree_builder = den.lib.parametric.exactly {
@@ -16,24 +27,33 @@ in
           unused = den.lib.take.unused OS;
         in
         {
-          nixos.imports = [
-            unfreeComposableModule
-            (
-              { config, ... }:
-              {
-                nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) config.unfree.packages;
-              }
-            )
+          ${host.class}.imports = moduleImports;
+        }
+      )
+      (
+        {
+          OS,
+          HM,
+          user,
+          host,
+        }:
+        let
+          unused = den.lib.take.unused [
+            OS
+            HM
           ];
-          homeManager.imports = [
-            unfreeComposableModule
-            (
-              { config, ... }:
-              {
-                nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) config.unfree.packages;
-              }
-            )
-          ];
+        in
+        {
+          ${user.class}.imports = moduleImports;
+        }
+      )
+      (
+        { HM, home }:
+        let
+          unused = den.lib.take.unused HM;
+        in
+        {
+          ${home.class}.imports = moduleImports;
         }
       )
     ];

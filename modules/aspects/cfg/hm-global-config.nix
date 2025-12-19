@@ -4,7 +4,7 @@
     { HM-OS-HOST }:
     den.lib.take.unused [ HM-OS-HOST.host ] {
       nixos.home-manager = {
-        useGlobalPkgs = true;
+        #useGlobalPkgs = true;
         useUserPackages = true;
       };
     };

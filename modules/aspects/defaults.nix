@@ -42,6 +42,7 @@
       <den/home-manager>
       <cfg/hm-global-config>
       <den/unfree_builder>
+      <den/define-user>
 
       (if config ? _module.args.CI then <cfg/ci-no-boot> else { })
 

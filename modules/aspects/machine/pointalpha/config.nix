@@ -1,5 +1,13 @@
+{ __findFile, ... }:
 {
   den.aspects.pointalpha = {
+
+    includes = [
+      (<den/unfree_agg> [
+        "keymapp"
+        "makemkv"
+      ])
+    ];
 
     homeManager =
       { pkgs, ... }:
