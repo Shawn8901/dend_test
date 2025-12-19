@@ -41,7 +41,7 @@
       den._.inputs'
       <den/home-manager>
       <cfg/hm-global-config>
-      <den/unfree_compose>
+      <den/unfree_builder>
 
       (if config ? _module.args.CI then <cfg/ci-no-boot> else { })
 
