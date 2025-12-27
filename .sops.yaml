@@ -21,20 +21,18 @@ all: &all
   - *next
 
 creation_rules:
-  - path_regex: modules/aspects/monitoree/secrets.yaml
+
+  - path_regex: files/shared-secrets.yaml
     key_groups:
       - age: *all
-  - path_regex: modules/aspects/desktop/secrets.yaml
+
+  - path_regex: modules/aspects/*/secrets.yaml
     key_groups:
       - age: *all
-  - path_regex: modules/aspects/secrets.yaml
-    key_groups:
-      - age: *all
+
   - path_regex: modules/aspects/users/secrets.yaml
     key_groups:
       - age: *all
-
-
 
   - path_regex: hosts/next/[^/]+\.yaml$
     key_groups:

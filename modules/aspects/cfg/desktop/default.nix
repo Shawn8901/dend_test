@@ -123,8 +123,6 @@
         };
 
         home.packages = with pkgs; [
-          samba
-          keepassxc
           vlc
           libreoffice-qt
           element-desktop

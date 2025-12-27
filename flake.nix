@@ -5,6 +5,10 @@
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
   inputs = {
+    asus-numberpad-driver = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:shawn8901/asus-numberpad-driver/nixos_improvement";
+    };
     den.url = "github:vic/den";
     firefox-addons = {
       inputs.nixpkgs.follows = "nixpkgs";

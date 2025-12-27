@@ -63,7 +63,6 @@
           };
         };
         zsh = {
-          enable = true;
           enableCompletion = true;
           enableBashCompletion = true;
           enableGlobalCompInit = true;
@@ -79,6 +78,9 @@
           '';
         };
       };
-      environment.systemPackages = [ pkgs.fzf ];
+      environment.systemPackages = [
+        pkgs.fzf
+        pkgs.vim
+      ];
     };
 }

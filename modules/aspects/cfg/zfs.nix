@@ -15,6 +15,10 @@
             ];
           }
         ];
+        prometheus.exporters.zfs = {
+          enable = config.boot.supportedFilesystems.zfs or false;
+          listenAddress = "localhost";
+        };
       };
     };
 }

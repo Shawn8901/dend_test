@@ -41,5 +41,18 @@
         };
         nix.settings.trusted-users = [ "shawn" ];
       };
+
+    homeManager =
+      { config, ... }:
+      {
+        sops = {
+          defaultSymlinkPath = "/run/user/1000/secrets";
+          defaultSecretsMountPoint = "/run/user/1000/secrets.d";
+        };
+        programs.dircolors = {
+          enable = true;
+          enableZshIntegration = true;
+        };
+      };
   };
 }
