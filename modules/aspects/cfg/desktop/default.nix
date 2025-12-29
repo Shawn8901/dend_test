@@ -9,15 +9,13 @@
 
   cfg.desktop = {
     includes = with cfg.desktop._; [
-      (<den/unfree_agg> [ "discord" ])
+      (<den/unfree> [ "discord" ])
 
       audio
       browser
       coding
       fonts
-      gaming
       networking
-      printer
     ];
 
     nixos =
@@ -85,6 +83,7 @@
             khelpcenter
             kate
             gwenview
+            kwin-x11
           ];
         };
         programs.kde-pim = {

@@ -34,16 +34,18 @@ creation_rules:
     key_groups:
       - age: *all
 
+  - path_regex: modules/aspects/machine/pointalpha/secrets.yaml
+    key_groups:
+      - age:
+        - *shawn
+        - *pointalpha
+    
+
   - path_regex: hosts/next/[^/]+\.yaml$
     key_groups:
       - age:
         - *shawn
         - *next
-  - path_regex: hosts/pointalpha/[^/]+\.yaml$
-    key_groups:
-      - age:
-        - *shawn
-        - *pointalpha
   - path_regex: hosts/pointjig/[^/]+\.yaml$
     key_groups:
       - age:

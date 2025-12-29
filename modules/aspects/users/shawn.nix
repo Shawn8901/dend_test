@@ -7,13 +7,14 @@
 
     includes = [
       <den/primary-user>
-      (<den/user-shell> "zsh")
 
-      (<den/unfree_agg> [
+      (<den/unfree> [
         "tampermonkey"
         "betterttv"
         "video-downloadhelper"
       ])
+
+      # <cfg/shell>
     ];
 
     nixos =

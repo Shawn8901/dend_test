@@ -4,7 +4,6 @@
     includes = [
       <cfg/desktop>
       <cfg/monitoree>
-      <cfg/shell>
       <cfg/zfs>
       <cfg/zrepl>
     ];

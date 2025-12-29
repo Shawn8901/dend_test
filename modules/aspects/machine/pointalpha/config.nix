@@ -3,7 +3,7 @@
   den.aspects.pointalpha = {
 
     includes = [
-      (<den/unfree_agg> [
+      (<den/unfree> [
         "keymapp"
         "makemkv"
       ])
@@ -26,13 +26,14 @@
       };
 
     nixos =
-      { pkgs, ... }:
+      { pkgs, config, ... }:
       {
-        environment.systemPackages = [
-          pkgs.solaar
-        ];
+        sops = {
+          defaultSopsFile = ./secrets.yaml;
+          secrets.zrepl = { };
+        };
 
-        # nixpkgs.config.allowUnfree = true;
+        environment.systemPackages = [ pkgs.solaar ];
 
         nix.settings = {
           keep-outputs = true;
@@ -40,18 +41,58 @@
           cores = 8;
         };
 
-        services.openssh = {
-          hostKeys = [
+        services = {
+          smartd = {
+            enable = true;
+            devices = [ { device = "/dev/nvme1"; } ];
+          };
+          pipewire = {
+            wireplumber.extraConfig = {
+              "10-bluez"."monitor.bluez.properties" = {
+                "bluez5.enable-sbc-xq" = true;
+                "bluez5.enable-msbc" = true;
+                "bluez5.enable-hw-volume" = true;
+              };
+              "11-bluetooth-policy"."wireplumber.settings"."bluetooth.autoswitch-to-headset-profile" = false;
+            };
+          };
+          zrepl.settings.jobs = [
             {
-              path = "/persist/etc/ssh/ssh_host_ed25519_key";
-              type = "ed25519";
-            }
-            {
-              path = "/persist/etc/ssh/ssh_host_rsa_key";
-              type = "rsa";
-              bits = 4096;
+              name = "pointalpha_safe";
+              type = "source";
+              filesystems = {
+                "rpool/safe<" = true;
+              };
+              snapshotting = {
+                type = "periodic";
+                interval = "1h";
+                prefix = "zrepl_";
+              };
+              send = {
+                encrypted = false;
+                compressed = true;
+              };
+              serve = {
+                type = "tls";
+                listen = ":8888";
+                ca = ../../../../files/cert/zrepl/tank.crt;
+                cert = ../../../../files/cert/zrepl/pointalpha.crt;
+                key = config.sops.secrets.zrepl.path;
+                client_cns = [ "tank" ];
+              };
             }
           ];
+        };
+
+        programs = {
+          ausweisapp = {
+            enable = true;
+            openFirewall = true;
+          };
+          nh.flake = "/home/shawn/dev/nixos-configuration";
+          kdeconnect.enable = true;
+          droidcam.enable = true;
+          adb.enable = true;
         };
 
       };

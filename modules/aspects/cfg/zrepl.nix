@@ -9,7 +9,7 @@ let
   servePorts =
     zrepl:
     map (serveEntry: toInt (removePrefix ":" serveEntry.serve.listen)) (
-      filter (builtins.hasAttr "serve") zrepl.settings.jobs
+      filter (builtins.hasAttr "serve") (zrepl.settings.jobs or [ ])
     );
 
   monitoringPort = 9811;

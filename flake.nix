@@ -9,7 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:shawn8901/asus-numberpad-driver/nixos_improvement";
     };
-    den.url = "github:vic/den";
+    den.url = "github:shawn8901/den";
     firefox-addons = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";

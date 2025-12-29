@@ -1,9 +1,9 @@
 { __findFile, ... }:
 {
-  cfg.desktop._.printer = {
+  cfg.printer = {
 
     includes = [
-      (<den/unfree_agg> [ "epsonscan2" ])
+      (<den/unfree> [ "epsonscan2" ])
     ];
 
     nixos =

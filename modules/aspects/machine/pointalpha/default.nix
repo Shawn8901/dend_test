@@ -3,11 +3,13 @@
   den.aspects.pointalpha = {
     includes = [
       <cfg/desktop>
-      # <cfg/monitoree>
-      # <cfg/remote-builder>
-      # <cfg/shell>
-      # <cfg/zfs>
-      # <cfg/zrepl>
+      <cfg/gaming>
+      <cfg/monitoree>
+      <cfg/perlless>
+      <cfg/printer>
+      <cfg/remote-builder>
+      <cfg/zfs>
+      <cfg/zrepl>
     ];
   };
 }

@@ -1,8 +1,8 @@
 { __findFile, ... }:
 {
-  cfg.desktop._.gaming = {
+  cfg.gaming = {
     includes = [
-      (<den/unfree_agg> [
+      (<den/unfree> [
         "steam"
         "steam-unwrapped"
         "teamspeak6-client"

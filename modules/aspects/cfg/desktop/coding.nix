@@ -2,7 +2,7 @@
 {
   cfg.desktop._.coding = {
     includes = [
-      (<den/unfree_agg> [
+      (<den/unfree> [
         "vscode"
         "vscode-extension-mhutchie-git-graph"
         "vscode-extension-MS-python-vscode-pylance"

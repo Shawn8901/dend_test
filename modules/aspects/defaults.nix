@@ -59,6 +59,16 @@
           };
         };
 
+        boot = {
+          bcache.enable = false;
+          enableContainers = false;
+          tmp = {
+            useTmpfs = lib.mkDefault true;
+            cleanOnBoot = true;
+          };
+          swraid.enable = lib.mkDefault false;
+        };
+
         system = {
           stateVersion = "23.05";
           disableInstallerTools = true;
@@ -186,7 +196,6 @@
       den._.inputs'
       <den/home-manager>
       <cfg/hm-global-config>
-      <den/unfree_builder>
       <den/define-user>
 
       (if config ? _module.args.CI then <cfg/ci-no-boot> else { })

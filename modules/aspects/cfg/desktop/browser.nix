@@ -89,6 +89,7 @@
               "browser.cache.disk.enable" = false;
               "browser.cache.memory.enable" = true;
               "extensions.pocket.enabled" = false;
+              "extensions.update.enabled" = false;
               "media.ffmpeg.vaapi.enabled" = true;
               "media.ffvpx.enabled" = false;
               "media.navigator.mediadatadecoder_vpx_enabled" = true;

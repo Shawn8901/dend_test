@@ -5,7 +5,7 @@
 {
   den.aspects.root = {
     includes = [
-      (<den/user-shell> "zsh")
+      # <cfg/shell>
     ];
 
     nixos =
